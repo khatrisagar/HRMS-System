@@ -25,7 +25,6 @@ const checkIn = async() => {
     document.getElementById("checkout").classList.toggle("btn-checkout1");
 
     document.getElementById("green").innerHTML += ` <div class="check-green">
-    <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")}  </span>
     </div>`
 
 }
