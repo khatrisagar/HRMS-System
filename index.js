@@ -54,8 +54,8 @@ app.use("/*", pageNotFound);
 //     res.render('dashboard.ejs')
 // })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}} `);
+let server = app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT} `);
 
 });
 const io = socketIo(server)
