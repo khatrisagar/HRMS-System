@@ -54,8 +54,8 @@ app.use("/*", pageNotFound);
 //     res.render('dashboard.ejs')
 // })
 
-const server = app.listen(PORT, () => {
-    console.log("Server is running on port 8000");
+app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}} `);
 
 });
 const io = socketIo(server)
