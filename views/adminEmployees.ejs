@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/style/dashboard.css" />
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
+
+    <title>HRMS- Dashboard</title>
+</head>
+
+<body>
+    <style>
+        .admin-employee-table-container{
+            min-width: 100% ;
+            padding: 2rem;
+        }
+        .admin-employee-table{
+            border-collapse: collapse;
+            width:100%;
+        }
+        thead{
+            border-radius: 10px;
+        }
+        th{
+            color: var(--white);
+            padding: 16px;
+        }
+        .admin-employee-table-head-tr{
+            background-color: var(--blue-head);
+        }
+        table tr:first-child th:first-child {
+            border-top-left-radius: 8px;
+        }
+            
+        table tr:first-child th:last-child {
+            border-top-right-radius: 8px;
+        }
+        td{
+            color: var(--secondary-text-color);
+            padding: 16px;
+            text-align: center;
+        }
+
+
+        .admin-employee-table-body-tr{
+            border: 1px solid var(--secondary-text-color);
+        }
+        td>a{
+            color: var(--primary-head);
+        }
+    </style>
+
+
+    <div class="dashboard-wrapper flex flex-row">
+        <div class="dashboard-right">
+            <%- include('components/adminSidebar.ejs') %>
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Employees"}) %>
+
+                <div class="dashboard-data-container admin-employee-table-container flex flex-row">
+                    <table class="admin-employee-table">
+                        <tr class="admin-employee-table-head-tr">
+                            <th>Employee ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>City</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>View More</th>
+                        </tr>
+                        <% employees.forEach((data)=>{ %>
+                            <tr class="admin-employee-table-body-tr">
+                                <td><%= data.fk_emp_id%></td>
+                                <td><%= data.first_name%></td>
+                                <td><%= data.last_name%></td>
+                                <td><%= data.email%></td>
+                                <td><%= data.city%></td>
+                                <td><%= data.phone_number%></td>
+                                <td><a href="/admin/dashboard/employee/<%= data.fk_emp_id%>">View More</a></td>
+
+                            </tr>
+                        <%}) %>
+
+                    </table>
+                </div>
+        </div>
+
+  
+  </body>
+
+
+</html>

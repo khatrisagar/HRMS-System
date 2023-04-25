@@ -6,7 +6,7 @@ const query =  util.promisify(conn.query).bind(conn)
 const dashboardProfile = require('./dashboardprofile.controller')
 
 const adminDashboardRedirecting =  async (req,res) =>{
-    res.redirect('/admin/dashboard')
+    res.redirect('/admin/dashboard/employee')
 }
 
 

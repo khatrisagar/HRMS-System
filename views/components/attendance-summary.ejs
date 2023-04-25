@@ -90,8 +90,8 @@
                         <%=  Math.floor(attendanceData.monthlyBreakArr[i]/60) %> Hours <%= attendanceData.monthlyBreakArr[i]%60 %> Min
                     </td>
 
-                    <td><span><%=  Math.floor(attendanceData.dailyWorkHoursArr[i]/60) %> Hours <%= attendanceData.dailyWorkHoursArr[i]%60 %> Min</span><br />
-                        <progress id="file" value="<%= attendanceData.dailyWorkHoursArr[i] %>" max="540"></progress></td>
+                    <td><span><%=  Math.floor((attendanceData.dailyWorkHoursArr[i]-attendanceData.monthlyBreakArr[i])/60) %> Hours <%= (attendanceData.dailyWorkHoursArr[i]-attendanceData.monthlyBreakArr[i])%60 %> Min</span><br />
+                        <progress id="file" value="<%= attendanceData.dailyWorkHoursArr[i]-attendanceData.monthlyBreakArr[i] %>" max="540"></progress></td>
 
                     <%} %>
 

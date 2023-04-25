@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensation</title>
+    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <link rel="stylesheet" href="/style/dashboard.css">
     <link rel="stylesheet" href="/style/sensation.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
 </head>
 
@@ -19,91 +22,214 @@
 
         </div>
         <div class="dashboard-left">
-            <%- include('components/header.ejs',{name:"Dashboard"}) %>
-            <div class="dashboard-data-container sensation-wrapper flex flex-row">
-                
-                <div class="sensation-messages">
-                    <% for(i=0;i<data.length;i++){%>
-                       <% if(data[i].fk_emp_id == emp_id){ %>
-                        <div class="flex flex-row text-container container-right">
-                            <div class="">
-                                <img class="sensation-img" src='/<%=data[i].profile_photo%>'
-                                onerror="this.src='/images/man.png';this.onerror='';"    
-                                alt="employee profile picture" />
-                            </div>
-                            <div class="contain flex flex-col">
-                                <p class="emp-name">
-                                    <%=data[i].first_name%>
-                                </p>
-                                <p class="emp-comment">
-                                    <%=data[i].sensation_comment%>
-                                </p>
-                            </div>
+            <%- include('components/header.ejs',{name:"Sensation"}) %>
+                <div class="dashboard-data-container sensation-wrapper flex flex-row">
+                    <input type="hidden" id="emp_id" value="<%=emp_id%>">
+                    <div class="sensation-messages" id="messageContaine">
+                        <% for(i=0;i<data.length;i++){%>
+                            <% if(data[i].fk_emp_id==emp_id){ %>
+                                <div class="flex flex-row text-container container-right">
+                                    <div class="">
+                                        <img class="sensation-img" src='/<%=data[i].profile_photo%>'
+                                            onerror="this.src='/images/man.png';this.onerror='';"
+                                            alt="employee profile picture" />
+                                    </div>
+                                    <div class="contain flex flex-col">
+                                        <p class="emp-name">
+                                            <%=data[i].first_name%>
+                                        </p>
+                                        <%if(data[i].sensation_comment){%>
+                                        <p class="emp-comment">
+                                            <%=data[i].sensation_comment%>
+                                        </p>
+                                        <%}%>
+                                        <div>
+                                            <%if(data[i].image){%>
+                                                <img src="/<%=data[i].image%>" alt="">
+                                                <%}%>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } else { %>
+                                    <div class="flex flex-row text-container">
+                                        <div class="">
+                                            <img class="sensation-img" src='/<%=data[i].profile_photo%>'
+                                                onerror="this.src='/images/man.png';this.onerror='';"
+                                                alt="employee profile picture" />
+                                        </div>
+                                        <div class="contain flex flex-col">
+                                            <p class="emp-name">
+                                                <%=data[i].first_name%>
+                                            </p>
+                                            <%if(data[i].sensation_comment){%>
+                                                <p class="emp-comment">
+                                                    <%=data[i].sensation_comment%>
+                                                </p>
+                                                <%}%>
+                                            <div>
+                                                <%if(data[i].image){%>
+                                                    <img src="/<%=data[i].image%>" alt="">
+                                                    <%}%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+                    </div>
+
+                    <div class="flex flex-column input-tag">
+                        <div class="input-img">
+                            <img id="userImage" class="sensation-img" src='/<%= profilePhoto%>'
+                                onerror="this.src='/images/man.png';this.onerror='';" alt="employee profile picture" />
                         </div>
-                        <% } else { %>
-                            <div class="flex flex-row text-container">
-                                <div class="">
-                                    <img class="sensation-img" src='/<%=data[i].profile_photo%>'
-                                    onerror="this.src='/images/man.png';this.onerror='';"    
-                                    alt="employee profile picture" />
-                                </div>
-                                <div class="contain flex flex-col">
-                                    <p class="emp-name">
-                                        <%=data[i].first_name%>
-                                    </p>
-                                    <p class="emp-comment">
-                                        <%=data[i].sensation_comment%>
-                                    </p>
-                                </div>
-                            </div>
-                        <% } %>
-                    <% } %>
-                </div>
 
-                <div class="flex flex-column input-tag">
-                    <div class="input-img">
-                        <img class="sensation-img" src='/<%= profilePhoto%>'
-                        onerror="this.src='/images/man.png';this.onerror='';"
-                        alt="employee profile picture" />
-                    </div>
-
-                    <div class="input-text">
-                        <form action="/dashbord/post-sensation" method="post" onsubmit="" class="form">
+                        <div class="input-text">
+                            <form method="post" onsubmit="" class="form">
 
 
-                            <input type="text" name="sensation" id="sensation">
-                            <input type="submit" value=" Post " class="sensation-submit">
-                        </form>
+                                <input type="text" name="sensation" id="sensation">
+                                <p id="fileUploade" onclick="handelFileUpload()">+</p>
+                                <input type="button" value=" Post " class="sensation-submit" onclick="addSesaction()">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 
 
 
 </body>
+<script src="/socket.io/socket.io.js"></script>
 <script>
+
+    var socket = io();
+    socket.on('message', () => { console.log("hello!") })
+
+
+
+
+    var userMesage = document.getElementById('userMessage')
+    var messageContaine = document.getElementById('messageContaine');
+    var emp_id = document.getElementById('emp_id').value;
+    var userImage = document.getElementById('userImage').src;
+    var userName = document.getElementById('userName').innerText;
+
     function addSesaction() {
-        var userMesage = document.getElementById('userMessage')
-        var inputValue = document.getElementById('sensation').value;
+
+        var inputValue = document.getElementById('sensation');
+        
+        socket.emit('chat', { emp_id, "inputValue":inputValue.value, userImage, userName });
+
+
         fetch(`/dashbord/post-sensation`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
-                "inputValue": inputValue
+                "inputValue": inputValue.value
             }),
         })
             .then((res) => {
                 return res.json()
             })
-            .then((res) => {
-                console.log("data Received");
+            .then((data) => {
+                console.log(data)
             })
+
+
+            inputValue.value="";
     }
 
+
+    handelFileUpload = async () => {
+        const { value: file } = await Swal.fire({
+            title: 'Select image',
+            input: 'file',
+            inputAttributes: {
+                'aria-label': 'Upload  picture',
+                'name': 'file',
+
+            }
+        })
+
+        if (file) {
+
+            let formData = new FormData()
+            let inputValue = document.getElementById('sensation');
+      
+            formData.append('file', file);
+            formData.append('inputValue', inputValue.value)
+
+
+
+            fetch(`/dashbord/post-sensation`, {
+                method: "POST",
+                body: formData,
+            })
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    socket.emit('chat', { emp_id, "inputValue":inputValue.value, userImage, userName, "image": data.image });
+                })
+
+                inputValue.value="";
+        }
+    }
+
+
+    socket.on('chat', (data) => {
+
+        let s = ``;
+
+        if (data.emp_id == emp_id) {
+            s += `<div class="flex flex-row text-container container-right">
+                    <div class="">
+                        <img class="sensation-img" src='${data.userImage}'
+                        onerror="this.src='/images/man.png';this.onerror='';"    
+                        alt="employee profile picture" />
+                    </div>
+                    <div class="contain flex flex-col">
+                        <p class="emp-name">
+                            ${data.userName}
+                        </p>
+                        
+                            ${(data.inputValue)?(`<p class="emp-comment">${data.inputValue}</p>`):('')}
+                        
+
+                            ${(data.image)?(`<div><img src="/${data.image}" alt=""></div>`):('')}
+                        
+                    </div>
+                </div>`
+        }
+        else {
+            s += `<div class="flex flex-row text-container">
+                        <div class="">
+                            <img class="sensation-img" src=${data.userImage}
+                            onerror="this.src='/images/man.png';this.onerror='';"    
+                            alt="employee profile picture" />
+                        </div>
+                        <div class="contain flex flex-col">
+                            <p class="emp-name">
+                                ${data.userName}
+                            </p>
+                            ${(data.inputValue)?(`<p class="emp-comment">${data.inputValue}</p>`):('')}
+                            ${(data.image)?(`<div><img src="/${data.image}" alt=""></div>`):('')}
+                        </div>
+                    </div>`
+        }
+      
+        messageContaine.innerHTML += s;
+        messageContaine.scrollTo(0, messageContaine.scrollHeight);
+
+    })
+
+
+
+    messageContaine.scrollTo(0, messageContaine.scrollHeight)
+    
 
 </script>
 

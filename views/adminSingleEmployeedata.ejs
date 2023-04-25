@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2d11fdd863.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="stylesheet" href="/style/profile-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <title>User-Profile</title>
+</head>
+
+<body>
+    <div class="dashboard-wrapper flex flex-row">
+        <div class="dashboard-right">
+            <%- include('components/adminSidebar.ejs') %>
+
+        </div>
+        <div class="dashboard-left">
+            <%- include('components/header.ejs',{name:"Profile"}) %>
+       
+    <div class="main-body">
+        <div class="profile-page">
+            <div class="profile">
+                <div class="profile-page-inner">
+                    <div class="profile-pic" style="border-radius: 10px;">
+                        <img src="/<%=data[0].profile_photo%>" alt="" width="100%" height="100%" >
+                    </div>
+                    <div>
+                        <!-- <button class="btn"><i class="bi-pencil"></i> Edit Profile</button> -->
+                    </div>
+                </div>
+                <div class="assign-tag">
+                    <h3> <i class="bi-tag"></i> Assign-Tag</h3>
+                    <hr>
+                    <div class="tag">
+                        <i class="bi-emoji-smile"></i>
+                        <label for="no-tag">No Any Tag Assigned!</label>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-maincard">
+                <div class="card">
+                    <h3><i class="bi-person"></i> Basic Information</h3>
+                    <hr><br>
+                    <div class="single-row">
+                        <span class="left-part">Full Name:</span>
+                        <span class="right-part"><%=data[0].first_name%> &nbsp; <%=data[0].last_name%></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Employee ID:</span>
+                        <span class="right-part"> <%=data[0].fk_emp_id%></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Personal Email:</span>
+                        <span class="right-part"> <%=data[0].email%></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Company Email:</span>
+                        <span class="right-part"></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Gender:</span>
+                        <span class="right-part"><%=data[0].gender%> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Birthday:</span>
+                        <span class="right-part"> <%=data[0].birth_date%></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Marital Status:</span>
+                        <span class="right-part"> <%=data[0].relationship%></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Status:</span>
+                        <span class="right-part"> <i class="fa-solid fa-check"></i>Active</span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Allowed WFH:</span>
+                        <span class="right-part"> No</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="bi-person-workspace"></i> Company Relations</h3>
+                    <hr><br>
+                    <div class="single-row">
+                        <span class="left-part">Department:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Designation:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Batch:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Reports To:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Joining Date:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Probation End Date:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Work Duration:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="bi-phone "></i> Contact Information</h3>
+                    <hr><br>
+                    <div class="single-row">
+                        <span class="left-part">Mobile Phone:</span>
+                        <span class="right-part"><%= data[0].phone_number %></span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Emergency Contact Number:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Emergency Contact Person:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Current Address:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Permanent Address:
+                        </span>
+                        <span class="right-part"> </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="bi-paperclip"></i> Document</h3>
+                    <hr><br>
+                    <div class="single-row">
+                        <span class="left-part">Driving License Number:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">PAN Number:</span>
+                        <a href="/<%=data[0].pan_card%>"><span class="right-part">Click here to view</span></a>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Aadhar Number/SSN:</span>
+                        <a href="/<%=data[0].aadhar_card%>"><span class="right-part">Click here to view</span></a>
+                    </div>
+                    <div class="single-row">
+                        <span class="left-part">Voter ID Number:</span>
+                        <span class="right-part"> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> </div>
+</body>
+<script src="/script/checkin.js"></script>
+
+</html>
