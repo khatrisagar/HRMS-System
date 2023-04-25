@@ -106,8 +106,6 @@ const brakeIn = async() => {
     })
 
     let data = await res.json();
-    console.log(data)
-    console.log("sss",data.isAlreadyBrakein)
     if(data.isAlreadyBrakein)
     {
         console.log("if",data.isAlreadyBrakein)
@@ -129,6 +127,9 @@ const brakeIn = async() => {
     }
 
 }
+
+
+
 
 
 
