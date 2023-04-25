@@ -25,7 +25,12 @@
     <div class="profile-container flex flex-row item-center" id="profile-container" onclick="openMenu()">
 
       <div class="profile-image-container">
-        <img class="employee-profile-image" src='/<%= profilePhoto%>' alt="/images/default.png" />
+        <img 
+        class="employee-profile-image"
+        src='/<%= profilePhoto%>'
+        onerror="this.src='/images/man.png';this.onerror='';"
+        alt='/images/man.png'
+        />
       </div>
       <div class="employee-name">
         <p class="emp-name">

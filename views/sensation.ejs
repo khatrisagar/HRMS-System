@@ -84,12 +84,12 @@
                         </div>
 
                         <div class="input-text">
-                            <form method="post" onsubmit="" class="form">
+                            <form method="post" action="" onsubmit="formSumbmit()" class="form">
 
 
                                 <input type="text" name="sensation" id="sensation">
                                 <p id="fileUploade" onclick="handelFileUpload()">+</p>
-                                <input type="button" value=" Post " class="sensation-submit" onclick="addSesaction()">
+                                <input type="button" value=" Post " class="sensation-submit" id="sensation-submit   " onclick="addSesaction()">
                             </form>
                         </div>
                     </div>
@@ -114,6 +114,11 @@
     var emp_id = document.getElementById('emp_id').value;
     var userImage = document.getElementById('userImage').src;
     var userName = document.getElementById('userName').innerText;
+
+    function formSumbmit(event){
+        event.preventDefault();
+    }
+
 
     function addSesaction() {
 
@@ -141,6 +146,13 @@
 
             inputValue.value="";
     }
+
+    const sensationSubmit = document.getElementById('sensation-submit')
+    sensationSubmit.addEventListener('keypress',()  => {
+        if(e.key === 'Enter') {
+            addSesaction()
+        }
+    })
 
 
     handelFileUpload = async () => {

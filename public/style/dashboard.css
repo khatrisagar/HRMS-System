@@ -55,6 +55,8 @@
     --card-shadow: #ffffff7e;
     --primary-head: #65adff;
     --detail-text: #5d9abdc5;
+    --text-white: #ffffff;
+    --mode: dark;
 }
 
 /* [data-theme="dark"]{
@@ -107,6 +109,8 @@
     --card-shadow: #0000007e;
     --primary-head: #396aa1;
     --detail-text: #5d9abdc5;
+    --text-white: #000000;
+    --mode: light;
 }
 
 
