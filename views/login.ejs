@@ -9,6 +9,8 @@
     <title>Login Form </title>
     <link rel="icon" type="image/x-icon" href="/images/fevicon_logo.jpeg">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -30,15 +32,20 @@
         <div class="login form" style="display: flex; flex-direction: column;">
            <img src="../images/hrms.png" alt="company logo" class="company-logo" style="align-self: center;"  width="200px" />
             <h2>Login</h2>
-            <form action="/post-login" method="post">
-                <input type="text" placeholder="Enter your email" name="user_email" onclick="removeText()" >
+            <form action="/post-login" onsubmit="return verifyIP(event)" method="post">
+
+                <input type="text" placeholder="Enter your email" name="user_email" id="user_email" onclick="removeText()" >
+                
                 <input type="password" placeholder="Enter your password" name="user_password" id="Password">
+                
                 <i class="fa-solid fa-eye" id="togglePassword" onclick="eye(this.id)" onclick="eyeout(this.id)"></i>
                 <%if(locals.err){%>
+                
                 <p style="color: red;"><%=err%></p>
                 <%}%>
                 <a href="/forget-password">Forgot password?</a>
                 <input type="submit" class="button" value="submit">
+                <div id="ip"></div>
             </form>
             <div class="signup">
                 <span class="signup">Don't have an account?

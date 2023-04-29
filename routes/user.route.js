@@ -12,6 +12,7 @@ const checkin = require("../controllers/checkin.controler");
 const employeedataController = require('../controllers/employee-data.controller');
 const emailcontroller = require('../controllers/email-controller');
 const { auth } = require('../middleware/auth')
+const checkIPController = require('../controllers/checkIP.controller');
 
 router.get('/attendance_summary', attendance_summary.attendancy_summary)
 
@@ -24,6 +25,7 @@ router.post('/post-registration', registrationController.postRegistration);
 router.get('/get-activate', activationController.getActivate);
 router.post('/post-activate', activationController.postActivate);
 router.get('/get-logout', loginController.getLogout);
+router.get('/validateIP', checkIPController.verifyUserIP);
 //router.get('/employee-data',employeeController);
 
 router.get('/forget-password', forgetController.forgetPassword);
