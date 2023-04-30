@@ -98,7 +98,7 @@ top: 10px;
     bottom: 10px;
     position:absolute;
     width: 77%;
-    /* align-items: center; */
+    align-items: center;
     align-items: flex-end;
     justify-content: center;
     z-index: 0;

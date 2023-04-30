@@ -36,19 +36,19 @@
 
 
         <div class="registration form" style="display: flex; flex-direction: column;">
-            <img src="../images/hrms.png" alt="company logo" class="company-logo" style="align-self: center;" />
+            <img src="../images/esparkbizlogo.svg" alt="company logo" class="company-logo" style="align-self: center;" />
             <h2>Signup</h2>
             <form action="/post-registration" method="post">
-                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect()"> <small id="emailErr">*</small>
+                <input type="text" placeholder="Enter your email" name="user_email" id="email" onchange="emailCorrect()"> <small id="emailErr"></small>
 
                 <p style="position: relative;">
                     <input type="password" placeholder="Create a password" name="user_password" id="Password" onchange="passwordError()">
                     <i class="fa-solid fa-eye" id="togglePassword" onclick="eye(this.id)" onclick="eyeout(this.id)" style="position: absolute; right: 20px; top: 35px;"></i>
                 </p>
 
-                <small id="passwordErr">*</small> 
+                <small id="passwordErr"></small> 
                 <input type="password" placeholder="Confirm your password" oninput="confirmPassword()" id="Cpassword">
-                <small id="passvalid">*</small>
+                <small id="passvalid"></small>
                 <input type="submit" id="submit_btn" class="button" value="Submit">
             </form>
             <div class="signup">

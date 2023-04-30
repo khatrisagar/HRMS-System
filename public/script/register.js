@@ -121,8 +121,10 @@ async function getIP() {
     try{
       const resposne = await fetch('https://api.ipify.org/?format=json')
       const userIP = await resposne.json()
+      console.log("ippppp",userIP)
       document.getElementById('ip').innerHTML = `<input type="hidden" value="${userIP.ip}" name="userIP" id="user_IP"/>`
     }
+
     catch(err){
         console.log("err", err)
     }
@@ -151,6 +153,7 @@ async function getIP() {
     })
 
      await getIP()
+
     
     const user_email = document.querySelector('#user_email').value
     const user_password = document.querySelector('#Password').value
@@ -169,11 +172,11 @@ async function getIP() {
         const res = await response.json();
 
         if(res.ans === "login"){
-            location.assign(`/get-login`);
-            // alertFire.fire({
-            //     icon: 'warning',
-            //     title: res.message
-            // })
+            // location.assign(`/get-login`);
+            alertFire.fire({
+                icon: 'warning',
+                title: res.message
+            })
         }
         if(res.ans === "err"){
             alertFire.fire({

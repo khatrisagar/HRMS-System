@@ -46,10 +46,10 @@ const sendMail = async(email1) => {
         ">
         <a href="" style="font-size:1.4em;color:
         #00466A
-        ;text-decoration:none;font-weight:600">Your Brand</a>
+        ;text-decoration:none;font-weight:600">eSparkbiz</a>
         </div>
         <p style="font-size:1.1em">Hi,</p>
-        <p>Thank you for choosing our Brand. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
+        <p>Thank you for choosing eSparkbiz. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes</p>
         <h2 style="background:
         #00466A
         ;margin: 0 auto;width: max-content;padding: 0 10px;color:

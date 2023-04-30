@@ -6,7 +6,7 @@ const adminDashboardcontroller = require('../controllers/adminDashboard.controll
 const leaveApprove = require('../controllers/leave-approve.controller')
 const adminComments = require('../controllers/adminComments.controller')
 const adminEmployeeData = require('../controllers/adminEmployeeData.contoller')
-
+const AllowedDevicesRoutes = require('../controllers/allowedDevice.controller')
 
 
 router.get('/', adminDashboardcontroller.adminDashboardRedirecting)
@@ -18,6 +18,9 @@ router.get('/dashboard/comments', adminComments.getCommentData)
 router.get('/dashboard/commentId', adminComments.getCommentId);
 router.get('/dashboard/employee', adminEmployeeData.employeesData);
 router.get('/dashboard/employee/:id', adminEmployeeData.singleEmployeeData);
+
+router.get('/dashboard/allowed-devices', AllowedDevicesRoutes.getAllowedDevices);
+router.post('/dashboard/allowed-devices', AllowedDevicesRoutes.postAllowedDevices);
 
 
 module.exports = router

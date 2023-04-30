@@ -44,7 +44,10 @@
                         <div class="first">
                         <div class="basicinfo">
                             <!-- <div>Photos</div> -->
-                            <div><img src="<%= profilePhoto%>" alt="Error" class="pro"></div>
+                            <div><img src="<%= profilePhoto%>"
+                                onerror="this.src='/images/man.png';this.onerror='';"
+                                        alt='profile photo' 
+                                        style="width: 200px;" class="pro"></div>
                             <div class="remove-photo"><a href="#" class="remove">Remove</a></div>
                         </div>
                         <div class="formgroup">

@@ -21,14 +21,17 @@
 
         </div>
         <div class="dashboard-left">
-            <%- include('components/header.ejs',{name:"Profile"}) %>
+           <%- include('components/header.ejs',{name:"Admin Employees", link:"Employee"}) %>
        
     <div class="main-body">
         <div class="profile-page">
             <div class="profile">
                 <div class="profile-page-inner">
                     <div class="profile-pic" style="border-radius: 10px;">
-                        <img src="/<%=data[0].profile_photo%>" alt="" width="100%" height="100%" >
+                        <img src="/<%=data[0].profile_photo%>" 
+                        onerror="this.src='/images/man.png';this.onerror='';"
+                        alt="" width="100%" height="100%"
+                         >
                     </div>
                     <div>
                         <!-- <button class="btn"><i class="bi-pencil"></i> Edit Profile</button> -->

@@ -51,8 +51,8 @@
     --yellow:#bea725;
     --yellow-hover:#8a7502;
     --yellow-disable:#cec490;
-    --bg-card: #2d3e44;
-    --card-shadow: #ffffff7e;
+    --bg-card: #213a44;
+    --card-shadow: #a7a7a788;
     --primary-head: #65adff;
     --detail-text: #5d9abdc5;
     --text-white: #ffffff;
@@ -90,7 +90,7 @@
     --secondary-text-color:#4b5563;
     --white: #ffffff;
     --black: #000000;
-    --bg-color:#f1f5f9;
+    --bg-color:#eef1f4;
     --bg-secondary: #ffffff;
     --green: #008000;
     --green-hover: #005f00;
@@ -388,7 +388,7 @@ li{
     padding: 1rem;
 }
 .dashboard-card{
-    
+    border-radius: 8px;
     background-color: var(--bg-card);
     padding: 1rem;
     box-shadow: 1px 1px 3px var(--card-shadow);

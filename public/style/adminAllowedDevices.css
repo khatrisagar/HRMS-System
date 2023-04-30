@@ -1,0 +1,56 @@
+.admin-allowed-devices-container{
+    padding: 16px;
+    width: 100%;
+}
+.admin-allowed-devices-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-allowed-devices-table-head-tr{
+    background-color:  var(--blue-head);
+    color: var(--white);
+}
+th{
+    padding: 16px;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+    
+table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.admin-allowed-devices-table-body-tr{
+    text-align: center;
+    border: 1px solid var(--secondary-text-color);
+}
+td{
+    padding: 16px;
+    color: var(--secondary-text-color);
+}
+.admin-allowed-devices-table-body-tr>td>input{
+    background: transparent;
+    border: 1px solid var(--secondary-text-color);
+    color: var(--secondary-text-color);
+    padding: 5px;
+    border-radius: 3px;
+}
+.ip-id{
+    width: 40px;
+    text-align: center;
+}
+.admin-allowed-devices-header{
+ display: flex;
+ justify-content: flex-end;
+}
+
+.addButton{
+    color: var(--bg-colors);
+    background-color: var(--secondary-text-color);
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px
+}
