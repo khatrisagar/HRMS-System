@@ -21,6 +21,7 @@ router.get('/dashboard/employee/:id', adminEmployeeData.singleEmployeeData);
 
 router.get('/dashboard/allowed-devices', AllowedDevicesRoutes.getAllowedDevices);
 router.post('/dashboard/allowed-devices', AllowedDevicesRoutes.postAllowedDevices);
+router.post('/dashboard/delete-allowed-devices', AllowedDevicesRoutes.deleteAllowedDevices);
 
 
 module.exports = router

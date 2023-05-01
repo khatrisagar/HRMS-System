@@ -83,7 +83,7 @@
                     </td>
                     <td>
                         <% if(attendanceData.data1[i].checkout_time){ %>
-                            <%=moment(attendanceData.data1[i].checkout_time).utcOffset(tz).format("hh:mm:ss")%>
+                            <%=moment(attendanceData.data1[i].checkout_time).utcOffset(parseInt(tz)).format("hh:mm:ss")%>
                         <% } %>
                     </td>
                     <td>

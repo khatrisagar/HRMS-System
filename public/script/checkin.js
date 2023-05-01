@@ -24,7 +24,7 @@ const checkIn = async() => {
     document.getElementById("checkout").classList.toggle("btn-checkout1");
 
     document.getElementById("green").innerHTML += ` <div class="check-green">
-    <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(tz).format("hh:mm:ss")}  </span>
+    <span ><label>Checked In :</label>${moment(data.checkindate).utcOffset(parseInt(tz)).format("hh:mm:ss")}  </span>
 
     </div>`
 
@@ -50,7 +50,7 @@ const checkOut = async() => {
         document.getElementsByClassName("check-inout")[0].innerHTML = "none";
 
         document.getElementById("green").innerHTML += `  <div class="check-red">
-        <span ><label > Check Out :</label>${moment(data.checkoutdata).utcOffset(tz).format("hh:mm:ss")}</span>
+        <span ><label > Check Out :</label>${moment(data.checkoutdata).utcOffset(parseInt(tz)).format("hh:mm:ss")}</span>
     </div>`
     } else {
         return false
