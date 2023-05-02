@@ -61,7 +61,7 @@
        async function addIpAddress(i){
             let ipAddress = document.querySelector(`#new_ip-address-${i}`).value
             let deviceName = document.querySelector(`#new_device-name-${i}`).value
-            console.log("aaaa",id,ipAddress,deviceName)
+            console.log("aaaa",ipAddress,deviceName)
 
         await fetch (`/admin/dashboard/allowed-devices`,{
             method: "POST",
